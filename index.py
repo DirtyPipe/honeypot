@@ -76,7 +76,6 @@ class Resquest(BaseHTTPRequestHandler):
         self.send_header("X-Varnish-Cache", "Miss")
         self.send_header("X-Wix-Request-Id", "1579229867.68013969302196914554")
         self.send_header("X-XSS-Protection", "1; mode=block")                
-        self.flush_headers()
         self.end_headers()
         self.wfile.write(data)
 
