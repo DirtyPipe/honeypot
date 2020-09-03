@@ -7,7 +7,12 @@ web蜜罐
 
 `python3 index.py`
 
-使用tcpdump抓包
-`tcpdump -i eth0 -w all.pcap`
+端口转发，将21-65535端口的流量转发到80端口
+
+`iptables -t nat -A PREROUTING -p tcp --dport 81:65535 -j REDIRECT --to-port 80`
+
+使用tcpdump抓包，6小时保存一个文件并且排除22端口
+
+`tcpdump -i eth0 -G 21600 -w %Y_%m%d_%H%M_%S.pcap -q -n -nn not port 22`
 
 如果需要后台可以使用nohup进行
