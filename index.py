@@ -87,8 +87,8 @@ class Resquest(BaseHTTPRequestHandler):
             self._set_response()
             
         except:
-            self.rfile.close()
-            self.wfile.close()
+            self.rfile.flush()
+            self.wfile.flush()
             pass
 
     def do_HEAD(self):
@@ -96,8 +96,8 @@ class Resquest(BaseHTTPRequestHandler):
             logging.info("Time: %s\nGET %s\nPath: %s\nHeaders:\n%s\n", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),str(self.client_address[0]), str(self.path), str(self.headers))
             self._set_response()
         except:
-            self.rfile.close()
-            self.wfile.close()
+            self.rfile.flush()
+            self.wfile.flush()
             pass
 
     def do_POST(self):
@@ -107,8 +107,8 @@ class Resquest(BaseHTTPRequestHandler):
             logging.info("Time: %s\nPOST %s\nPath: %s\nHeaders:\n%s\n\nBody:\n%s\n",time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),  str(self.client_address[0]), str(self.path), str(self.headers), post_data.decode('utf-8'))
             self._set_response()
         except:
-            self.rfile.close()
-            self.wfile.close()
+            self.rfile.flush()
+            self.wfile.flush()
             pass
 
 
