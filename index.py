@@ -88,7 +88,7 @@ class Resquest(BaseHTTPRequestHandler):
             
         except:
             self.rfile.close()
-            self.server_close()
+            self.wfile.close()
             pass
 
     def do_HEAD(self):
@@ -97,7 +97,7 @@ class Resquest(BaseHTTPRequestHandler):
             self._set_response()
         except:
             self.rfile.close()
-            self.server_close()
+            self.wfile.close()
             pass
 
     def do_POST(self):
@@ -108,7 +108,7 @@ class Resquest(BaseHTTPRequestHandler):
             self._set_response()
         except:
             self.rfile.close()
-            self.server_close()
+            self.wfile.close()
             pass
 
 
