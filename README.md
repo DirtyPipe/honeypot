@@ -8,7 +8,7 @@ web蜜罐
 
 使用方法：
 
-`python3 index.py 80`
+`python3 index.py 80 fjd1jof3`
 
 端口转发，将21-65535端口的流量转发到80端口
 
