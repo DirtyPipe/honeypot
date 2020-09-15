@@ -82,18 +82,27 @@ class Resquest(BaseHTTPRequestHandler):
         self.wfile.write(data)
 
     def do_GET(self):
-        logging.info("Time: %s\nGET %s\nPath: %s\nHeaders:\n%s\n", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),str(self.client_address[0]), str(self.path), str(self.headers))
-        self._set_response()
+        try:
+            logging.info("Time: %s\nGET %s\nPath: %s\nHeaders:\n%s\n", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),str(self.client_address[0]), str(self.path), str(self.headers))
+            self._set_response()
+        except:
+            pass
 
     def do_HEAD(self):
-        logging.info("Time: %s\nGET %s\nPath: %s\nHeaders:\n%s\n", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),str(self.client_address[0]), str(self.path), str(self.headers))
-        self._set_response()
+        try:
+            logging.info("Time: %s\nGET %s\nPath: %s\nHeaders:\n%s\n", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),str(self.client_address[0]), str(self.path), str(self.headers))
+            self._set_response()
+        except:
+            pass
 
     def do_POST(self):
-        content_length = int(self.headers['Content-Length']) # <--- Gets the size of data
-        post_data = self.rfile.read(content_length) # <--- Gets the data itself
-        logging.info("Time: %s\nPOST %s\nPath: %s\nHeaders:\n%s\n\nBody:\n%s\n",time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),  str(self.client_address[0]), str(self.path), str(self.headers), post_data.decode('utf-8'))
-        self._set_response()
+        try:
+            content_length = int(self.headers['Content-Length']) # <--- Gets the size of data
+            post_data = self.rfile.read(content_length) # <--- Gets the data itself
+            logging.info("Time: %s\nPOST %s\nPath: %s\nHeaders:\n%s\n\nBody:\n%s\n",time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),  str(self.client_address[0]), str(self.path), str(self.headers), post_data.decode('utf-8'))
+            self._set_response()
+        except:
+            pass
 
 
 
