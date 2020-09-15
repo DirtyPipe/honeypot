@@ -4,13 +4,14 @@ web蜜罐
 
 包含主流Server头和主流首页特征
 
-增加了日志功能，记录在txt里面。具体格式还有待考量
+增加了日志功能，默认记录在access.log里面。具体格式还有待考量
+增加多线程防止阻塞
 
 使用方法：
 
-`python3 index.py 80 fjd1jof3`
+`python3 index.py 80 access`
 
-端口转发，将21-65535端口的流量转发到80端口
+端口转发，将81-65535端口的流量转发到80端口
 
 `iptables -t nat -A PREROUTING -p tcp --dport 81:65535 -j REDIRECT --to-port 80`
 
